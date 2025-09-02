@@ -1,0 +1,55 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Black background circle -->
+  <circle cx="60" cy="60" r="58" fill="#000000"/>
+  
+  <!-- Golden circular outline -->
+  <circle cx="60" cy="60" r="58" fill="none" stroke="#D97706" stroke-width="2"/>
+  
+  <!-- Golden Crown at the top -->
+  <g transform="translate(60, 35)">
+    <!-- Crown base with jewels -->
+    <rect x="-18" y="0" width="36" height="10" fill="#D97706" rx="3"/>
+    <!-- Crown points -->
+    <rect x="-15" y="-10" width="8" height="10" fill="#D97706"/>
+    <rect x="-7" y="-12" width="8" height="12" fill="#D97706"/>
+    <rect x="1" y="-14" width="8" height="14" fill="#D97706"/>
+    <rect x="9" y="-12" width="8" height="12" fill="#D97706"/>
+    <rect x="17" y="-10" width="8" height="10" fill="#D97706"/>
+    <!-- Crown jewels -->
+    <circle cx="-12" cy="-5" r="2" fill="#FCD34D"/>
+    <circle cx="-4" cy="-7" r="2" fill="#FCD34D"/>
+    <circle cx="4" cy="-9" r="2" fill="#FCD34D"/>
+    <circle cx="12" cy="-7" r="2" fill="#FCD34D"/>
+    <!-- Cross on top of crown -->
+    <rect x="-1.5" y="-18" width="3" height="8" fill="#D97706"/>
+    <rect x="-4" y="-20" width="8" height="3" fill="#D97706"/>
+  </g>
+  
+  <!-- Text: Crowned in dark brown script style -->
+  <text x="60" y="75" text-anchor="middle" font-family="serif" font-size="16" font-weight="bold" fill="#92400E">Crowned</text>
+  
+  <!-- Ampersand with golden decorative lines -->
+  <text x="60" y="90" text-anchor="middle" font-family="serif" font-size="14" fill="#92400E">&</text>
+  <line x1="35" y1="90" x2="30" y2="90" stroke="#D97706" stroke-width="2"/>
+  <line x1="85" y1="90" x2="90" y2="90" stroke="#D97706" stroke-width="2"/>
+  
+  <!-- Text: Free in dark brown script style -->
+  <text x="60" y="105" text-anchor="middle" font-family="serif" font-size="16" font-weight="bold" fill="#92400E">Free</text>
+  
+  <!-- Golden Dove on the left -->
+  <g transform="translate(45, 95)">
+    <path d="M0,0 Q-8,-8 -15,0 Q-8,8 0,0" fill="#D97706"/>
+    <circle cx="-3" cy="-3" r="1.5" fill="#D97706"/>
+    <path d="M-5,-2 Q-8,-5 -10,-2" stroke="#D97706" stroke-width="1" fill="none"/>
+  </g>
+  
+  <!-- Golden Leaf/Floral elements on the right -->
+  <g transform="translate(75, 95)">
+    <path d="M0,0 Q8,-8 15,0 Q8,8 0,0" fill="#D97706"/>
+    <path d="M5,0 Q10,-5 15,-2 Q10,1 5,0" fill="#D97706"/>
+    <path d="M8,0 Q12,-3 15,-1 Q12,1 8,0" fill="#D97706"/>
+    <!-- Curved tendrils -->
+    <path d="M10,2 Q12,5 15,8" stroke="#D97706" stroke-width="1.5" fill="none"/>
+    <path d="M8,4 Q10,7 12,10" stroke="#D97706" stroke-width="1.5" fill="none"/>
+  </g>
+</svg>
