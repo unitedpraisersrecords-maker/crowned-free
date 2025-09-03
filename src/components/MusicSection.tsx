@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Music, Play, ExternalLink, Heart, Star, Calendar } from 'lucide-react'
+import Link from 'next/link'
 
 export default function MusicSection() {
   // Sample music data - replace with actual Crowned & Free songs
@@ -100,34 +101,6 @@ export default function MusicSection() {
         amazon: "#",
         youtube: "#"
       }
-    },
-    {
-      id: 4,
-      title: "Live at Church",
-      type: "EP",
-      releaseDate: "2023",
-      cover: "/images/ep-cover-1.jpg",
-      description: "Live recordings from worship services",
-      streamingLinks: {
-        spotify: "#",
-        apple: "#",
-        amazon: "#",
-        youtube: "#"
-      }
-    },
-    {
-      id: 5,
-      title: "Acoustic Sessions",
-      type: "EP",
-      releaseDate: "2023",
-      cover: "/images/ep-cover-2.jpg",
-      description: "Intimate acoustic performances",
-      streamingLinks: {
-        spotify: "#",
-        apple: "#",
-        amazon: "#",
-        youtube: "#"
-      }
     }
   ]
 
@@ -164,7 +137,7 @@ export default function MusicSection() {
             Music <span className="text-amber-600">Releases</span>
           </h3>
           
-          <div className="grid grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {musicReleases.map((release) => (
               <div key={release.id} className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow flex flex-col">
                 <div className="aspect-square bg-gradient-to-br from-amber-100 to-orange-100 flex items-center justify-center">
@@ -211,6 +184,62 @@ export default function MusicSection() {
           </div>
         </motion.div>
 
+        {/* Songs Section - Mobile Optimized */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="mb-16"
+        >
+          <h3 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            Featured <span className="text-amber-600">Songs</span>
+          </h3>
+          
+          {/* Mobile Cards Layout */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            {songs.map((song) => (
+              <div key={song.id} className="bg-white rounded-xl shadow-lg p-4 md:p-6 hover:shadow-xl transition-shadow">
+                <div className="flex items-center gap-3 mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-amber-100 to-orange-100 rounded-lg flex items-center justify-center">
+                    <Music className="w-6 h-6 text-amber-600" />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="font-semibold text-gray-900 text-lg">{song.title}</h4>
+                    <p className="text-gray-600 text-sm">{song.album}</p>
+                  </div>
+                </div>
+                
+                <div className="grid grid-cols-2 gap-3 mb-4 text-sm">
+                  <div>
+                    <span className="text-gray-500">Duration:</span>
+                    <p className="font-medium text-gray-900">{song.duration}</p>
+                  </div>
+                  <div>
+                    <span className="text-gray-500">Genre:</span>
+                    <p className="font-medium text-gray-900">{song.genre}</p>
+                  </div>
+                  <div>
+                    <span className="text-gray-500">Release:</span>
+                    <p className="font-medium text-gray-900">{song.releaseDate}</p>
+                  </div>
+                </div>
+                
+                <div className="flex gap-2">
+                  <a href={song.streamingLink} className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-amber-600 text-white rounded-lg hover:bg-amber-700 transition-colors text-sm font-medium">
+                    <Play className="w-4 h-4" />
+                    Stream
+                  </a>
+                  <a href={song.purchaseLink} className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors text-sm font-medium">
+                    <ExternalLink className="w-4 h-4" />
+                    Buy
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Redesigned Video Component */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -224,8 +253,8 @@ export default function MusicSection() {
           </h3>
           
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-            <div className="grid lg:grid-cols-2">
-              <div className="p-8 lg:p-12">
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+              <div className="p-6 md:p-8 lg:p-12">
                 <h4 className="text-2xl font-bold text-gray-900 mb-6">
                   Watch Our Latest Video
                 </h4>
@@ -249,19 +278,19 @@ export default function MusicSection() {
                   </div>
                 </div>
                 
-                <div className="flex flex-wrap gap-3">
-                  <a href="/music" className="btn-primary">
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link href="/video" className="btn-primary text-center">
                     <Play className="w-5 h-5" />
                     View All Videos
-                  </a>
-                  <a href="/booking" className="inline-flex items-center gap-2 px-6 py-3 bg-transparent border-2 border-amber-500 text-amber-600 font-semibold rounded-xl hover:bg-amber-50 transition-all duration-300">
+                  </Link>
+                  <Link href="/#contact" className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-transparent border-2 border-amber-500 text-amber-600 font-semibold rounded-xl hover:bg-amber-50 transition-all duration-300">
                     <Calendar className="w-5 h-5" />
                     Book Live Performance
-                  </a>
+                  </Link>
                 </div>
               </div>
               
-              <div className="bg-gradient-to-br from-amber-500 to-orange-600 p-8 lg:p-12 flex items-center justify-center">
+              <div className="bg-gradient-to-br from-amber-500 to-orange-600 p-6 md:p-8 lg:p-12 flex items-center justify-center">
                 <div className="text-center text-white">
                   <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
                     <Play className="w-12 h-12 text-white" />

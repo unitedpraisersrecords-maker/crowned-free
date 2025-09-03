@@ -26,7 +26,7 @@ export default function ContactSection() {
 
 
         {/* Contact Form */}
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -85,10 +85,10 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
             viewport={{ once: true }}
-            className="bg-gradient-to-br from-slate-50 to-gray-100 p-8 rounded-2xl"
+            className="bg-gradient-to-br from-slate-50 to-gray-100 p-6 md:p-8 rounded-2xl"
           >
-            <form className="space-y-6">
-              <div className="grid md:grid-cols-2 gap-4">
+            <form className="space-y-5 md:space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     First Name
@@ -141,7 +141,7 @@ export default function ContactSection() {
                   Message
                 </label>
                 <textarea 
-                  rows={5}
+                  rows={4}
                   className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
                   placeholder="Tell us how we can help you..."
                 ></textarea>

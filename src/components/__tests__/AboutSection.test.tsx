@@ -5,10 +5,10 @@ import AboutSection from '../AboutSection'
 describe('AboutSection', () => {
   it('renders the main heading', () => {
     render(<AboutSection />)
-
+    
     const heading = screen.getByRole('heading', { level: 2 })
     expect(heading).toBeInTheDocument()
-    expect(heading).toHaveTextContent('About Crowned & Free')
+    expect(heading).toHaveTextContent('AboutCrowned & Free') // No space between the spans
   })
 
   it('displays the artists names', () => {

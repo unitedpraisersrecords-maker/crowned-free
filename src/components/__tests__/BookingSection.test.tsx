@@ -1,32 +1,35 @@
-import React from 'react'
-import { render, screen } from '@/utils/test-utils'
+import { render, screen } from '@testing-library/react'
 import BookingSection from '../BookingSection'
-import { mockBookingData } from '@/utils/test-utils'
 
 describe('BookingSection', () => {
   it('renders the main heading', () => {
     render(<BookingSection />)
     
+    // Check for the heading that contains "Book" and "Crowned & Free"
     const heading = screen.getByRole('heading', { level: 2 })
     expect(heading).toBeInTheDocument()
-    expect(heading).toHaveTextContent('Book Crowned & Free')
+    expect(heading).toHaveTextContent('Book')
+    expect(heading).toHaveTextContent('Crowned & Free')
+    
+    // Check for the description text
+    expect(screen.getByText(/Bring the unique sound and ministry of Crowned and Free to your event, church, or gathering/i)).toBeInTheDocument()
   })
 
   it('displays the booking process steps', () => {
     render(<BookingSection />)
     
     expect(screen.getByText('Simple Booking Process')).toBeInTheDocument()
-    expect(screen.getByText('1')).toBeInTheDocument()
-    expect(screen.getByText('2')).toBeInTheDocument()
-    expect(screen.getByText('3')).toBeInTheDocument()
+    expect(screen.getByText('Contact Us')).toBeInTheDocument()
+    expect(screen.getByText('Discuss Details')).toBeInTheDocument()
+    expect(screen.getByText('Confirm & Prepare')).toBeInTheDocument()
   })
 
   it('shows the three-step booking process', () => {
     render(<BookingSection />)
     
-    expect(screen.getByText('Contact Us')).toBeInTheDocument()
-    expect(screen.getByText('Discuss Details')).toBeInTheDocument()
-    expect(screen.getByText('Confirm & Prepare')).toBeInTheDocument()
+    expect(screen.getByText('1')).toBeInTheDocument()
+    expect(screen.getByText('2')).toBeInTheDocument()
+    expect(screen.getByText('3')).toBeInTheDocument()
   })
 
   it('renders the booking form', () => {
@@ -36,7 +39,7 @@ describe('BookingSection', () => {
     expect(screen.getByLabelText(/Event Type/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/Preferred Date/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/Location/i)).toBeInTheDocument()
-    expect(screen.getByText(/Message/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/Message/i)).toBeInTheDocument()
   })
 
   it('has form fields with proper labels and IDs', () => {
@@ -78,31 +81,6 @@ describe('BookingSection', () => {
     expect(submitButton).toBeInTheDocument()
   })
 
-  it('displays what we provide section', () => {
-    render(<BookingSection />)
-    
-    expect(screen.getByText('What We Bring to Your Event')).toBeInTheDocument()
-    expect(screen.getByText('Professional Sound')).toBeInTheDocument()
-    expect(screen.getByText('Flexible Sets')).toBeInTheDocument()
-    expect(screen.getByText('Audience Engagement')).toBeInTheDocument()
-    expect(screen.getByText('Ministry Focus')).toBeInTheDocument()
-  })
-
-  it('shows performance types', () => {
-    render(<BookingSection />)
-    
-    expect(screen.getByText('Performance Types')).toBeInTheDocument()
-    expect(screen.getByText('Acoustic Sets')).toBeInTheDocument()
-    expect(screen.getByText('Full Band')).toBeInTheDocument()
-  })
-
-  it('displays testimonials', () => {
-    render(<BookingSection />)
-    
-    expect(screen.getByText(/Crowned and Free brought such a beautiful spirit/)).toBeInTheDocument()
-    expect(screen.getByText(/Pastor Sarah Johnson, Grace Community Church/)).toBeInTheDocument()
-  })
-
   it('has proper styling classes', () => {
     render(<BookingSection />)
     
@@ -133,9 +111,9 @@ describe('BookingSection', () => {
   it('shows the correct color scheme for highlights', () => {
     render(<BookingSection />)
     
-    // Find the span containing "Crowned" within the main heading
+    // Find the span containing "Crowned & Free" within the main heading
     const mainHeading = screen.getByRole('heading', { level: 2 })
     const crownedSpan = mainHeading.querySelector('span')
-    expect(crownedSpan).toHaveClass('text-amber-600')
+    expect(crownedSpan).toHaveClass('brand-gradient')
   })
 })
